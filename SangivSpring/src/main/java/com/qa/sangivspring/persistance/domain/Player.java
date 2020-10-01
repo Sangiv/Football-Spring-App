@@ -53,4 +53,10 @@ public class Player {
 			this.club = club;
 		}
 		
+		public Player(@NotNull @Size(min = 1, max = 120) String name, @Size(min = 1, max = 120) String position) {
+			super();
+			this.name = name;
+			this.position = position;
+		}
+		
 }
