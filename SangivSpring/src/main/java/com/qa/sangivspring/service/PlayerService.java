@@ -64,9 +64,10 @@ public class PlayerService {
 	
 	//delete
 	public boolean delete(Long ID) {
-		this.repo.deleteById(ID);
-		return !this.repo.existsById(ID);
-	}
-	
-	
+        if (!this.repo.existsById(ID)) {
+            throw new PlayerNotFoundException();
+        }
+        this.repo.deleteById(ID);
+        return !this.repo.existsById(ID);
+    }
 }

@@ -64,9 +64,12 @@ public class ClubService {
 	
 	//delete
 	public boolean delete(Long ID) {
-		this.repo.deleteById(ID);
-		return !this.repo.existsById(ID);
-	}
+        if (!this.repo.existsById(ID)) {
+            throw new ClubNotFoundException();
+        }
+        this.repo.deleteById(ID);
+        return !this.repo.existsById(ID);
+    }
 	
 	
 }
